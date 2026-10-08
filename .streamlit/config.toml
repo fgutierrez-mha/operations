@@ -1,0 +1,11 @@
+[theme]
+# Matches the brand ramp in mhaOperations.py (navy / light blue / white).
+# primaryColor drives selected pills, buttons, sliders, and checked states.
+# secondaryBackgroundColor also paints UNSELECTED pill backgrounds, so it
+# stays neutral/near-white rather than brand blue — a pale-blue sidebar made
+# unselected pills blend into it and disappear.
+primaryColor = "#3987e5"
+backgroundColor = "#fcfcfb"
+secondaryBackgroundColor = "#eef1f5"
+textColor = "#0b0b0b"
+font = "sans serif"
