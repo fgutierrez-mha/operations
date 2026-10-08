@@ -485,11 +485,11 @@ c3, c4 = st.columns(2)
 with c3:
     fig = go.Figure()
     fig.add_scatter(name="No-Show Rate", x=rate_df.index, y=rate_df["No-Show Rate"], mode="lines+markers",
-                    line=dict(color=STATUS["critical"], width=2))
+                    line=dict(color=STATUS["critical"], width=5), marker=dict(size=10))
     fig.add_scatter(name="Cancel Rate", x=rate_df.index, y=rate_df["Cancel Rate"], mode="lines+markers",
-                    line=dict(color=STATUS["serious"], width=2))
+                    line=dict(color=STATUS["serious"], width=5), marker=dict(size=10))
     fig.add_scatter(name="Reschedule Rate", x=rate_df.index, y=rate_df["Resched Rate"], mode="lines+markers",
-                    line=dict(color=STATUS["warning"], width=2))
+                    line=dict(color=STATUS["warning"], width=5), marker=dict(size=10))
     fig.update_yaxes(ticksuffix="%", rangemode="tozero")
     style_fig(fig)
     chart_card(fig, "No-Show / Cancel / Reschedule Rate by Month")
