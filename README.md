@@ -1,15 +1,11 @@
 # mhaOperations.py
 
-Streamlit operations dashboard for MHA appointments and encounters, built from the
-eCW **"Encounters by Provider & Location"** export. Companion to `mhaFinancials.py`
+Streamlit operations dashboard for MHA appointments and encounters, built from data export. Companion to `mhaFinancials.py`
 (same look, same sidebar-filter pattern), but focused on appointment/encounter KPIs.
 
 ## Requirements
 
 - Python packages: see `requirements.txt` (`streamlit`, `pandas`, `plotly`, `openpyxl`)
-- Data file: `Encounters by Provider*.xlsx` on the Desktop (one folder up from this
-  script). The most recently modified match is used automatically. A sidebar file
-  uploader is available for any other export.
 
 ## Running it
 
