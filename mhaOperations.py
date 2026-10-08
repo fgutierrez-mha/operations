@@ -193,6 +193,14 @@ def pct(n, d):
     return (n / d * 100) if d else 0.0
 
 
+def dates_only(frame):
+    """Show date columns as plain dates (no 00:00:00 time) in tables and CSVs."""
+    frame = frame.copy()
+    for col in frame.select_dtypes(include=["datetime"]).columns:
+        frame[col] = frame[col].dt.date
+    return frame
+
+
 # --------------------------------------------------------------------------
 # Data loading
 # --------------------------------------------------------------------------
@@ -574,7 +582,7 @@ with st.expander(f"Unlocked encounter worklist ({needs_lock_n})", expanded=False
         "Appointment Date", "Patient ID", "Provider", "Facility", "Visit Type Code",
         "Status Label", "Days Since Appt", "Note Done Date",
     ]
-    worklist = needs.sort_values("Days Since Appt", ascending=False)[worklist_cols]
+    worklist = dates_only(needs.sort_values("Days Since Appt", ascending=False)[worklist_cols])
     st.dataframe(worklist, width="stretch", hide_index=True)
     st.download_button(
         "Download unlocked worklist as CSV", worklist.to_csv(index=False).encode("utf-8"),
@@ -855,7 +863,7 @@ display_cols = [
     "Appointment Date", "Patient ID", "Provider", "Resource Provider", "Facility", "Visit Type Code",
     "Status Label", "Chart Lock Status", "Note Done Date", "Scheduled Minutes", "Days Since Appt",
 ]
-detail = df[display_cols].sort_values("Appointment Date")
+detail = dates_only(df[display_cols].sort_values("Appointment Date"))
 st.dataframe(detail, width="stretch", hide_index=True)
 st.download_button(
     "Download filtered data as CSV", detail.to_csv(index=False).encode("utf-8"),
